@@ -39,9 +39,11 @@ void TempSensorManager::calculateTemperature()
 {
     // get voltage
     double voltage1 = readProbe1();
+    //Serial.printf("voltage1: %f\n", voltage1);
     
     // find resistance based on voltage
     double resistance = (R1*voltage1)/(VDD - voltage1);
+    //Serial.printf("resistance: %f\n", resistance);
 
     // get temperature based on resistance
     temperatureProbe1 = getTempSteinhart(resistance);
@@ -100,11 +102,10 @@ double TempSensorManager::readProbe(adc1_channel_t channel)
 
 double TempSensorManager::getTempSteinhart(double r)
 {
-    double logR = log(r);
-    double tempKelvin = 1.0 / (t0 + (b / (logR + r0)));
-    double tempCelsius = tempKelvin - 273.15;
-
-    return tempCelsius;
+    double logR = log(r); // get the logarithm of the resistance
+    double temperature = 1 / (0.0012671238906383896 + 0.0002102861133812485 * logR + 1.9209353577048828e-7 * logR * logR * logR);
+    temperature = temperature - 273.15; // convert from Kelvin to Celsius
+    return temperature;
 }
 
 double TempSensorManager::getTempLUP(double resistance)

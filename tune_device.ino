@@ -15,7 +15,7 @@ void setup()
     Serial.begin(115200);
     gpioManager.setup();
     tempSensorManager.setup();
-    heater.setTargetTemp(37.0);
+    //heater.setTargetTemp(37.0);
 }
 
 
@@ -23,5 +23,6 @@ void loop()
 {
     gpioManager.checkButtonStatus();
     tempSensorManager.calculateTemperature();
-    heater.update(tempSensorManager.getPIDTemp());
+    double temp = tempSensorManager.getPIDTemp();
+    //heater.update(tempSensorManager.getPIDTemp());
 }
