@@ -1,5 +1,6 @@
 #include "HeaterControl.h"
 
+
 HeaterControl::HeaterControl(int heaterPin) : heaterPin_(heaterPin) {
   // Set heater and temperature sensor pins as outputs
   pinMode(heaterPin_, OUTPUT);
@@ -34,7 +35,7 @@ void HeaterControl::update(double temperature) {
   output = constrain(output, 0, 255);
 
   // Set heater power using PID output
-  analogWrite(heaterPin_, output);
+  ledcWrite(heaterPin_, output);
 
   // Update integral and derivative terms for next iteration
   integral_ += error;

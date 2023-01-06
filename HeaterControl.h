@@ -1,6 +1,9 @@
 #ifndef HEATERCONTROL_H
 #define HEATERCONTROL_H
 
+#include <Arduino.h>
+#include "esp32-hal-ledc.h"
+
 class HeaterControl {
  public:
   // Constructor
