@@ -103,7 +103,7 @@ double TempSensorManager::readProbe(adc1_channel_t channel)
 double TempSensorManager::getTempSteinhart(double r)
 {
     double logR = log(r); // get the logarithm of the resistance
-    double temperature = 1 / (0.0012671238906383896 + 0.0002102861133812485 * logR + 1.9209353577048828e-7 * logR * logR * logR);
+    double temperature = 1 / (0.0012671238906383896 + 0.0002102861133812485 * logR + 1.9209353577048828e-7 * logR * logR * logR); // steinhart equation
     temperature = temperature - 273.15; // convert from Kelvin to Celsius
     return temperature;
 }

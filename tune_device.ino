@@ -8,7 +8,7 @@ const int HEATER_PIN = 2;
 
 GPIOManager gpioManager(BUTTON_PIN);
 TempSensorManager tempSensorManager;
-HeaterControl heater(HEATER_PIN);
+// HeaterControl heater(HEATER_PIN);
 
 void setup() 
 {
