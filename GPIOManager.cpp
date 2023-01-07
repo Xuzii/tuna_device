@@ -10,6 +10,8 @@ GPIOManager::GPIOManager(int buttonPin)
 void GPIOManager::setup()
 {
     pinMode(buttonPin, INPUT_PULLUP);
+    pinMode(switchPin, OUTPUT);
+    digitalWrite(switchPin, HIGH);
 }
 
 void GPIOManager::checkButtonStatus()
@@ -23,10 +25,12 @@ void GPIOManager::checkButtonStatus()
 
         // do something here (e.g. turn on an LED, send a message)
         Serial.printf("Button Pressed \n");
+        digitalWrite(switchPin, LOW);
     }
     // if the button is not pressed and the flag is set
     else if (buttonState == HIGH && buttonPressed) {
         buttonPressed = false;  // clear the flag
+        digitalWrite(switchPin, HIGH);
     }
 }
 

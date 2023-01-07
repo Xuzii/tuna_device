@@ -16,6 +16,8 @@ private:
     // button debouncer
     int buttonPin;
     bool buttonPressed;
+
+    int switchPin = 18;
 };
 
 #endif //GPIOMANAGER_H
