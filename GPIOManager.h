@@ -17,6 +17,7 @@ private:
     int buttonPin;
     bool buttonPressed;
 
+    int boostPin = 5;
     int switchPin = 18;
 };
 

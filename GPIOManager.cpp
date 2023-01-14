@@ -11,7 +11,9 @@ void GPIOManager::setup()
 {
     pinMode(buttonPin, INPUT_PULLUP);
     pinMode(switchPin, OUTPUT);
+    pinMode(boostPin, OUTPUT);
     digitalWrite(switchPin, HIGH);
+    digitalWrite(boostPin, HIGH);
 }
 
 void GPIOManager::checkButtonStatus()
