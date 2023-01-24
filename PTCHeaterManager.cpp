@@ -15,8 +15,8 @@ void PTCHeaterManager::setup()
 
 void PTCHeaterManager::update(double temperature)
 {
-    input = temperature;
-    pid.Compute();
-    pwmValue = map(input, 0, 100, 0, 255);
-    analogWrite(HEATER_PIN, pwmValue);
+    // input = temperature;
+    // pid.Compute();
+    // pwmValue = map(input, 0, 100, 0, 255);
+    analogWrite(HEATER_PIN, 5);
 }
