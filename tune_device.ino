@@ -17,8 +17,6 @@ void setup()
     gpioManager.setup();
     tempSensorManager.setup();
     ptcHeaterManager.setup();
-
-    //heater.setTargetTemp(37.0);
 }
 
 

@@ -7,7 +7,9 @@ PTCHeaterManager::PTCHeaterManager() : pid(&input, &output, &setpoint, 2, 5, 1, 
 
 void PTCHeaterManager::setup()
 {
-    pinMode(HEATER_PIN, OUTPUT);
+    ledcAttachPin(HEATER_PIN, PWM1_Ch);
+    ledcSetup(PWM1_Ch, PWM1_Freq, PWM1_Res);
+    ledcWrite(PWM1_Ch, 0);
     pid.SetMode(AUTOMATIC);
     pid.SetSampleTime(1000);
     setpoint = 37.0;
@@ -15,8 +17,8 @@ void PTCHeaterManager::setup()
 
 void PTCHeaterManager::update(double temperature)
 {
-    // input = temperature;
-    // pid.Compute();
-    // pwmValue = map(input, 0, 100, 0, 255);
-    analogWrite(HEATER_PIN, 5);
+    input = temperature;
+    pid.Compute();
+    pwmValue = map(input, 0, 100, 0, 100);
+    ledcWrite(PWM1_Ch, 100);
 }
