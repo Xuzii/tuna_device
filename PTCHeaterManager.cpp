@@ -20,5 +20,6 @@ void PTCHeaterManager::update(double temperature)
     input = temperature;
     pid.Compute();
     pwmValue = map(input, 0, 100, 0, 100);
-    ledcWrite(PWM1_Ch, 100);
+    ledcWrite(PWM1_Ch, pwmValue);
+    
 }

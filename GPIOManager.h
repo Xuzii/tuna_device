@@ -18,7 +18,7 @@ private:
     bool buttonPressed;
 
     int boostPin = 5;
-    int switchPin = 18;
+    int switchPin = 2;
 };
 
 #endif //GPIOMANAGER_H
